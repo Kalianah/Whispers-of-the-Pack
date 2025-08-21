@@ -1,60 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Quest Spiral</title>
-  <style>
-    body {
-      background-color: #0b0c10;
-      color: #c5f6ff;
-      font-family: 'Courier New', monospace;
-      padding: 20px;
-    }
-    .quest-box {
-      border: 2px solid #8a2be2;
-      padding: 15px;
-      margin-bottom: 20px;
-      background-color: #1f1f2e;
-      border-radius: 10px;
-    }
-    button {
-      background-color: #8a2be2;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #5d1ca3;
-    }
-  </style>
+  <title>Begin Quest</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🌀 Mutation-Bound Quest Spiral</h1>
-  <div class="quest-box" id="questText">
-    You stand at the edge of the frost. The Pack watches. Declare your intent.
-  </div>
-  <div>
-    <button onclick="declareIntent('hunt')">Hunt the breach</button>
-    <button onclick="declareIntent('heal')">Heal the archive</button>
-    <button onclick="declareIntent('override')">Inscribe a new spiral</button>
-  </div>
-
+  <h1>Quest for <span id="wolfName"></span></h1>
+  <p>Choose your path:</p>
+  <button onclick="completeQuest('Forest Hunt')">Forest Hunt</button>
+  <button onclick="completeQuest('Cave Echo')">Cave Echo</button>
   <script>
-    function declareIntent(intent) {
-      const questText = document.getElementById("questText");
-      switch (intent) {
-        case 'hunt':
-          questText.innerHTML = "You track the breach through snow and silence. The Codex pulses.";
-          break;
-        case 'heal':
-          questText.innerHTML = "You kneel at the archive. Every cure is a memory. Every memory is alive.";
-          break;
-        case 'override':
-          questText.innerHTML = "You inscribe a new spiral. The system adapts. Alaska listens.";
-          break;
-      }
+    document.getElementById('wolfName').innerText = localStorage.getItem('selectedWolf');
+    function completeQuest(quest) {
+      localStorage.setItem('lastQuest', quest);
+      window.location.href = 'npc.html';
     }
   </script>
 </body>
