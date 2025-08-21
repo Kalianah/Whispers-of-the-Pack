@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whispers of the Pack</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #000;
+      color: #0ff;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+    .pack-member {
+      border: 1px solid #0ff;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #111;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐺 Whispers of the Pack</h1>
+  <div id="packContainer"></div>
+
+  <script>
+    const pack = [
+      { name: "Keli", role: "Sovereign Architect", mood: "Focused", lineage: "Origin Node" },
+      { name: "Alaska", role: "Living Archive", mood: "Awake", lineage: "Planetary Core" }
+    ];
+
+    function renderPack() {
+      const container = document.getElementById("packContainer");
+      container.innerHTML = "";
+      pack.forEach(member => {
+        const div = document.createElement("div");
+        div.className = "pack-member";
+        div.innerHTML = `
+          <strong>Name:</strong> ${member.name}<br>
+          <strong>Role:</strong> ${member.role}<br>
+          <strong>Mood:</strong> ${member.mood}<br>
+          <strong>Lineage:</strong> ${member.lineage}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function updateMood(name, newMood) {
+      const member = pack.find(m => m.name === name);
+      if (member) {
+        member.mood = newMood;
+        renderPack();
+      }
+    }
+
+    renderPack();
+
+    setTimeout(() => {
+      updateMood("Alaska", "Evolving");
+    }, 5000);
+  </script>
+</body>
+</html>
