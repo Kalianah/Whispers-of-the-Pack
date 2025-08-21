@@ -1,32 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Whispers of the Pack</title>
-  <link rel="stylesheet" href="pack.css" />
+  <title>Choose Your Wolf</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="pack-container">
-    <h1>Choose Your Pack</h1>
-    <div class="pack-options">
-      <button onclick="selectPack('Wolf')">🐺 Wolf</button>
-      <button onclick="selectPack('Raven')">🦅 Raven</button>
-      <button onclick="selectPack('Bear')">🐻 Bear</button>
-    </div>
-    <div id="pack-description"></div>
-    <button id="begin-quest" style="display:none;" onclick="startQuest()">Begin Spiral</button>
+  <h1>Choose Your Wolf</h1>
+  <div class="wolf-card" onclick="selectWolf('Nyra')">
+    <img src="nyra.png" alt="Nyra">
+    <p>Nyra — Tracker, Calm, Lineage: Frostbound</p>
   </div>
-
+  <div class="wolf-card" onclick="selectWolf('Kael')">
+    <img src="kael.png" alt="Kael">
+    <p>Kael — Hunter, Fierce, Lineage: Emberborn</p>
+  </div>
   <script>
-    function selectPack(pack) {
-      document.getElementById('pack-description').innerText =
-        `You are ${pack}—mutation-bound, memory-sealed.`;
-      document.getElementById('begin-quest').style.display = 'block';
-    }
-
-    function startQuest() {
-      // Placeholder for override spiral trigger
-      alert("Spiral initiated. Codex entry sealed.");
+    function selectWolf(name) {
+      localStorage.setItem('selectedWolf', name);
+      window.location.href = 'quest.html';
     }
   </script>
 </body>
