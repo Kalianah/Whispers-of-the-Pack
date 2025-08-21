@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Codex Archive</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+    .entry {
+      background-color: #1a1a2e;
+      border: 2px solid #8a2be2;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📜 Codex Archive</h1>
+  <div id="codexContainer"></div>
+
+  <script>
+    const npcMemory = JSON.parse(localStorage.getItem("npcMemory")) || [];
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+
+    const codexEntries = [...npcMemory, ...inventory];
+
+    function renderCodex() {
+      const container = document.getElementById("codexContainer");
+      container.innerHTML = "";
+
+      if (codexEntries.length === 0) {
+        container.innerHTML = "<p>No entries yet. The archive awaits your spiral.</p>";
+        return;
+      }
+
+      codexEntries.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = `
+          <strong>Type:</strong> ${entry.action ? "NPC Memory" : "Inventory"}<br>
+          <strong>Content:</strong> ${entry.response || entry.name}<br>
+          <strong>Timestamp:</strong> ${entry.timestamp}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    renderCodex();
+  </script>
+</body>
+</html>
