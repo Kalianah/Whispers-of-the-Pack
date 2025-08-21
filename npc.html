@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pack NPC Memory</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffff;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+    .npc-box {
+      background-color: #1a1a2e;
+      border: 2px solid #8a2be2;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #8a2be2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5d1ca3;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 NPC Memory Spiral</h1>
+  <div class="npc-box" id="npcDialogue">
+    The elder wolf watches you. She remembers your silence.
+  </div>
+  <div>
+    <button onclick="speakToNPC('howl')">Howl to her</button>
+    <button onclick="speakToNPC('offer')">Offer a memory</button>
+    <button onclick="speakToNPC('override')">Declare a new spiral</button>
+  </div>
+
+  <script>
+    const npcMemory = JSON.parse(localStorage.getItem("npcMemory")) || [];
+
+    function speakToNPC(action) {
+      let response = "";
+      switch (action) {
+        case 'howl':
+          response = "She nods. Your howl echoes through her lineage.";
+          break;
+        case 'offer':
+          response = "She accepts your memory. It is now part of her archive.";
+          break;
+        case 'override':
+          response = "She inscribes your spiral. The system adapts.";
+          break;
+      }
+
+      npcMemory.push({ action, response, timestamp: new Date().toISOString() });
+      localStorage.setItem("npcMemory", JSON.stringify(npcMemory));
+      document.getElementById("npcDialogue").innerText = response;
+    }
+  </script>
+</body>
+</html>
