@@ -1,0 +1,22 @@
+{
+  "npcMemory": [
+    {
+      "name": "Ashtrail",
+      "firstEncounter": {
+        "location": "Frostroot Hollow",
+        "emotion": "Curious",
+        "dialogue": "You walk alone. Why?"
+      },
+      "secondEncounter": {
+        "location": "Moonlit Ridge",
+        "emotion": "Respectful",
+        "dialogue": "You survived the Hollow. I remember your scent."
+      },
+      "dreamEcho": {
+        "trigger": "Lunar Sleep",
+        "vision": "Ashtrail howling at the ridge",
+        "mutationHint": "Echo Hearing Tier I"
+      }
+    }
+  ]
+}
