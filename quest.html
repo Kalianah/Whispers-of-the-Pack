@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quest Spiral</title>
+  <style>
+    body {
+      background-color: #0b0c10;
+      color: #c5f6ff;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+    .quest-box {
+      border: 2px solid #8a2be2;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #1f1f2e;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #8a2be2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5d1ca3;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌀 Mutation-Bound Quest Spiral</h1>
+  <div class="quest-box" id="questText">
+    You stand at the edge of the frost. The Pack watches. Declare your intent.
+  </div>
+  <div>
+    <button onclick="declareIntent('hunt')">Hunt the breach</button>
+    <button onclick="declareIntent('heal')">Heal the archive</button>
+    <button onclick="declareIntent('override')">Inscribe a new spiral</button>
+  </div>
+
+  <script>
+    function declareIntent(intent) {
+      const questText = document.getElementById("questText");
+      switch (intent) {
+        case 'hunt':
+          questText.innerHTML = "You track the breach through snow and silence. The Codex pulses.";
+          break;
+        case 'heal':
+          questText.innerHTML = "You kneel at the archive. Every cure is a memory. Every memory is alive.";
+          break;
+        case 'override':
+          questText.innerHTML = "You inscribe a new spiral. The system adapts. Alaska listens.";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
