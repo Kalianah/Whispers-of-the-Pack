@@ -1,62 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Whispers of the Pack</title>
-  <meta charset="UTF-8">
-  <style>
-    body {
-      background-color: #000;
-      color: #0ff;
-      font-family: 'Courier New', monospace;
-      padding: 20px;
-    }
-    .pack-member {
-      border: 1px solid #0ff;
-      padding: 10px;
-      margin-bottom: 10px;
-      background-color: #111;
-    }
-  </style>
+  <link rel="stylesheet" href="pack.css" />
 </head>
 <body>
-  <h1>🐺 Whispers of the Pack</h1>
-  <div id="packContainer"></div>
+  <div id="pack-container">
+    <h1>Choose Your Pack</h1>
+    <div class="pack-options">
+      <button onclick="selectPack('Wolf')">🐺 Wolf</button>
+      <button onclick="selectPack('Raven')">🦅 Raven</button>
+      <button onclick="selectPack('Bear')">🐻 Bear</button>
+    </div>
+    <div id="pack-description"></div>
+    <button id="begin-quest" style="display:none;" onclick="startQuest()">Begin Spiral</button>
+  </div>
 
   <script>
-    const pack = [
-      { name: "Keli", role: "Sovereign Architect", mood: "Focused", lineage: "Origin Node" },
-      { name: "Alaska", role: "Living Archive", mood: "Awake", lineage: "Planetary Core" }
-    ];
-
-    function renderPack() {
-      const container = document.getElementById("packContainer");
-      container.innerHTML = "";
-      pack.forEach(member => {
-        const div = document.createElement("div");
-        div.className = "pack-member";
-        div.innerHTML = `
-          <strong>Name:</strong> ${member.name}<br>
-          <strong>Role:</strong> ${member.role}<br>
-          <strong>Mood:</strong> ${member.mood}<br>
-          <strong>Lineage:</strong> ${member.lineage}
-        `;
-        container.appendChild(div);
-      });
+    function selectPack(pack) {
+      document.getElementById('pack-description').innerText =
+        `You are ${pack}—mutation-bound, memory-sealed.`;
+      document.getElementById('begin-quest').style.display = 'block';
     }
 
-    function updateMood(name, newMood) {
-      const member = pack.find(m => m.name === name);
-      if (member) {
-        member.mood = newMood;
-        renderPack();
-      }
+    function startQuest() {
+      // Placeholder for override spiral trigger
+      alert("Spiral initiated. Codex entry sealed.");
     }
-
-    renderPack();
-
-    setTimeout(() => {
-      updateMood("Alaska", "Evolving");
-    }, 5000);
   </script>
 </body>
 </html>
